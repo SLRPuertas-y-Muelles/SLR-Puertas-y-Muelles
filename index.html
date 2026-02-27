@@ -1,1 +1,76 @@
-<!DOCTYPE html>\n<html lang="es">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>SLR Puertas y Muelles</title>\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <header>\n        <h1>Bienvenidos a SLR Puertas y Muelles</h1>\n    </header>\n    <nav>\n        <ul>\n            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>\n            <li><a href="#servicios">Servicios</a></li>\n            <li><a href="#contacto">Contacto</a></li>\n        </ul>\n    </nav>\n    <main>\n        <section id="sobre-nosotros">\n            <h2>Sobre Nosotros</h2>\n            <p>SLR Puertas y Muelles es una empresa dedicada a...</p>\n        </section>\n        <section id="servicios">\n            <h2>Servicios</h2>\n            <p>Ofrecemos una variedad de servicios de alta calidad...</p>\n        </section>\n        <section id="contacto">\n            <h2>Contacto</h2>\n            <p>Puedes contactarnos a través de...</p>\n        </section>\n    </main>\n    <footer>\n        <p>&copy; 2026 SLR Puertas y Muelles</p>\n    </footer>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SLR Puertas y Muelles - Your trusted solution for gates and docks">
+    <meta name="keywords" content="Puertas, Muelles, SLR, Services">
+    <title>SLR Puertas y Muelles</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; }
+        header { background-color: #1e3a8a; color: white; padding: 10px 0; }
+        nav { display: flex; justify-content: space-around; }
+        nav a { color: white; text-decoration: none; padding: 10px; }
+        .hero { background-color: #d97706; height: 60vh; display: flex; justify-content: center; align-items: center; }
+        .hero h1 { margin: 0; font-size: 3em; animation: fadeIn 2s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .about, .services, .values, .contact { padding: 20px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .footer { background-color: #1e3a8a; color: white; text-align: center; padding: 10px 0; }
+        @media (max-width: 600px) { .hero h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#values">Values</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero" id="hero">
+        <h1>Welcome to SLR Puertas y Muelles</h1>
+    </div>
+
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>SLR Puertas y Muelles provides high-quality solutions for all your gates and docks needs.</p>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div>Service 1</div>
+            <div>Service 2</div>
+            <div>Service 3</div>
+            <div>Service 4</div>
+        </div>
+    </section>
+
+    <section class="values" id="values">
+        <h2>Our Values</h2>
+        <p>Integrity, Quality, Customer Service, Expertise.</p>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 SLR Puertas y Muelles. All rights reserved.</p>
+    </footer>
+</body>
+</html>
