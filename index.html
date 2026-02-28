@@ -1,76 +1,578 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SLR Puertas y Muelles - Your trusted solution for gates and docks">
-    <meta name="keywords" content="Puertas, Muelles, SLR, Services">
-    <title>SLR Puertas y Muelles</title>
+    <meta name="description" content="SLR Puertas y Muelles S.L. en Lliçà d'Amunt, Barcelona. Expertos en puertas seccionales industriales, muelles de carga, mantenimiento y reparación. Equipo con 20+ años experiencia. Presupuesto gratis.">
+    <meta name="keywords" content="puertas seccionales industriales, muelles de carga Barcelona, mantenimiento puertas industriales, reparación puertas seccionales, puertas rápidas industriales, Lliçà d'Amunt, Granollers, Vallès Oriental">
+    <meta name="author" content="SLR Puertas y Muelles S.L.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="geo.region" content="ES-CT">
+    <meta name="geo.placename" content="Lliçà d'Amunt">
+    <meta name="geo.position" content="41.6167;2.2333">
+    <meta name="ICBM" content="41.6167, 2.2333">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://slrpuertas.com/">
+    <meta property="og:title" content="SLR Puertas y Muelles S.L. | Puertas Seccionales Industriales Barcelona">
+    <meta property="og:description" content="Expertos en puertas seccionales y muelles de carga. Equipo con 20+ años de experiencia. Servicio profesional en Barcelona y provincia. Presupuesto sin compromiso.">
+    <meta property="og:image" content="https://slrpuertas.com/img/og-image.jpg">
+    <meta property="business:contact_data:street_address" content="Carrer Treball, 11">
+    <meta property="business:contact_data:locality" content="Lliçà d'Amunt">
+    <meta property="business:contact_data:region" content="Barcelona">
+    <meta property="business:contact_data:postal_code" content="08185">
+    <meta property="business:contact_data:country_name" content="Spain">
+
+    <title>Puertas Seccionales Industriales Barcelona | SLR Puertas y Muelles S.L.</title>
+    <link rel="canonical" href="https://slrpuertas.com/">
+
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; }
-        header { background-color: #1e3a8a; color: white; padding: 10px 0; }
-        nav { display: flex; justify-content: space-around; }
-        nav a { color: white; text-decoration: none; padding: 10px; }
-        .hero { background-color: #d97706; height: 60vh; display: flex; justify-content: center; align-items: center; }
-        .hero h1 { margin: 0; font-size: 3em; animation: fadeIn 2s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .about, .services, .values, .contact { padding: 20px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .footer { background-color: #1e3a8a; color: white; text-align: center; padding: 10px 0; }
-        @media (max-width: 600px) { .hero h1 { font-size: 2em; } }
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #1e40af;
+            --accent: #d97706;
+            --accent-light: #f59e0b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+
+        .preloader { position: fixed; inset: 0; background: var(--primary); display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s; }
+        .preloader.hidden { opacity: 0; pointer-events: none; }
+        .loader { width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.2); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all 0.3s; padding: 1.2rem 0; }
+        header.scrolled { background: rgba(30, 58, 138, 0.98); backdrop-filter: blur(12px); padding: 0.7rem 0; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; }
+        .logo-badge { width: 45px; height: 45px; background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4); }
+        .logo-text h1 { font-size: 1.25rem; font-weight: 700; margin: 0; line-height: 1.2; }
+        .logo-text span { display: block; font-size: 0.7rem; font-weight: 500; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; position: relative; }
+        nav a:hover { color: white; }
+        nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
+        nav a:hover::after { width: 100%; }
+        .btn-header { background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color: white !important; padding: 0.6rem 1.25rem !important; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3); }
+        .btn-header:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4); }
+        .btn-header::after { display: none !important; }
+
+        .menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        .hero { min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%); display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E"); }
+
+        .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 0.5rem 1rem; border-radius: 50px; color: #f59e0b; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
+        .hero h2 { font-size: 3.5rem; color: white; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+        .hero h2 span { color: #f59e0b; display: block; }
+        .hero > div > p { font-size: 1.25rem; color: rgba(255,255,255,0.85); margin-bottom: 2rem; line-height: 1.7; max-width: 90%; }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(217, 119, 6, 0.4); }
+        .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s; }
+        .btn-outline:hover { background: white; color: var(--primary); border-color: white; }
+        .hero-features { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .hero-feature { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); font-size: 0.95rem; }
+        .hero-feature-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+
+        .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+        .hero-image { width: 100%; max-width: 500px; aspect-ratio: 1; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .hero-image::before { content: '🏭'; font-size: 8rem; opacity: 0.4; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3)); }
+        .floating-badge { position: absolute; background: white; padding: 1.25rem; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); animation: float 6s ease-in-out infinite; }
+        .floating-badge.top { top: 10%; right: 0; animation-delay: 0s; }
+        .floating-badge.bottom { bottom: 15%; left: -20px; animation-delay: 3s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .floating-badge h4 { color: var(--primary); font-size: 1.75rem; font-weight: 800; line-height: 1; }
+        .floating-badge p { color: var(--gray); font-size: 0.85rem; margin-top: 0.25rem; font-weight: 500; }
+
+        .trust-bar { background: white; padding: 2.5rem 0; border-bottom: 1px solid var(--gray-light); }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+        .trust-item h3 { font-size: 2.25rem; color: var(--primary); font-weight: 800; margin-bottom: 0.25rem; }
+        .trust-item h3 span { color: var(--accent); }
+        .trust-item p { color: var(--gray); font-size: 0.9rem; font-weight: 500; }
+
+        section { padding: 5rem 0; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+        .section-label { display: inline-block; background: rgba(30, 58, 138, 0.1); color: var(--primary); padding: 0.4rem 1rem; border-radius: 50px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+        .section-title { font-size: 2.25rem; color: var(--dark); margin-bottom: 1rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
+        .section-subtitle { font-size: 1.1rem; color: var(--gray); line-height: 1.7; }
+
+        .about { background: var(--light); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-content h3 { font-size: 1.75rem; color: var(--dark); margin-bottom: 1rem; font-weight: 700; }
+        .about-content > p { color: var(--gray); margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.05rem; }
+        .about-highlight { background: white; padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent); margin: 1.5rem 0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .about-highlight p { color: var(--dark); font-weight: 500; margin: 0; }
+        .about-list { list-style: none; margin-top: 1.5rem; }
+        .about-list li { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: var(--dark); font-weight: 500; }
+        .about-list li::before { content: '✓'; width: 22px; height: 22px; background: #10b981; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+        .about-visual { position: relative; }
+        .about-image { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); border-radius: 20px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .about-image::before { content: '🔧'; font-size: 5rem; opacity: 0.3; }
+        .exp-card { position: absolute; bottom: -20px; left: -20px; background: var(--accent); color: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); text-align: center; min-width: 140px; }
+        .exp-card h4 { font-size: 2.5rem; font-weight: 800; line-height: 1; }
+        .exp-card p { font-size: 0.85rem; font-weight: 600; margin-top: 0.25rem; opacity: 0.95; }
+
+        .services { background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .service-card { background: white; border-radius: 16px; padding: 2rem; border: 2px solid var(--gray-light); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); transform: scaleX(0); transition: transform 0.3s ease; }
+        .service-card:hover { transform: translateY(-8px); border-color: transparent; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon { width: 60px; height: 60px; background: rgba(30, 58, 138, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1.25rem; transition: all 0.3s; }
+        .service-card:hover .service-icon { background: var(--primary); transform: scale(1.1) rotate(5deg); }
+        .service-card h3 { font-size: 1.15rem; color: var(--dark); margin-bottom: 0.75rem; font-weight: 700; }
+        .service-card p { color: var(--gray); line-height: 1.6; font-size: 0.95rem; margin-bottom: 1rem; }
+        .service-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.25rem; transition: gap 0.3s; }
+        .service-link:hover { gap: 0.5rem; }
+
+        .maintenance-note { background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(30, 58, 138, 0.1) 100%); border: 2px solid var(--primary); border-radius: 16px; padding: 2rem; margin-top: 3rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+        .maintenance-icon { width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; flex-shrink: 0; }
+        .maintenance-content h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .maintenance-content p { color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
+        .maintenance-features { display: flex; gap: 2rem; flex-wrap: wrap; }
+        .maintenance-features span { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--dark); font-weight: 500; }
+
+        .values { background: var(--primary); color: white; position: relative; overflow: hidden; }
+        .values::before { content: ''; position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: rgba(255,255,255,0.03); border-radius: 50%; }
+        .values .section-title { color: white; }
+        .values .section-subtitle { color: rgba(255,255,255,0.8); }
+        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+        .value-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.75rem; text-align: center; transition: all 0.3s ease; }
+        .value-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
+        .value-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .value-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: #f59e0b; font-weight: 700; }
+        .value-card p { font-size: 0.9rem; opacity: 0.85; line-height: 1.6; }
+
+        .contact { background: var(--light); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; }
+        .contact-info h3 { font-size: 1.5rem; color: var(--dark); margin-bottom: 0.75rem; }
+        .contact-info > p { color: var(--gray); margin-bottom: 2rem; line-height: 1.7; }
+        .contact-list { display: flex; flex-direction: column; gap: 1.25rem; }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .contact-icon-box { width: 48px; height: 48px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); flex-shrink: 0; }
+        .contact-details h4 { color: var(--dark); margin-bottom: 0.25rem; font-size: 0.95rem; font-weight: 600; }
+        .contact-details p { color: var(--gray); font-size: 0.9rem; line-height: 1.5; }
+        .contact-form-box { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: var(--dark); font-weight: 600; font-size: 0.85rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 2px solid var(--gray-light); border-radius: 10px; font-size: 0.95rem; transition: all 0.2s; font-family: inherit; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .btn-submit { width: 100%; background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color: white; border: none; padding: 1rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.5rem; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(217, 119, 6, 0.3); }
+        .success-msg { display: none; background: #10b981; color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem; text-align: center; font-weight: 500; animation: slideDown 0.4s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { background: var(--dark); color: white; padding: 3rem 0 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+        .footer-brand h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: #f59e0b; }
+        .footer-brand p { color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.9rem; }
+        .footer-col h4 { color: white; margin-bottom: 1rem; font-size: 0.95rem; font-weight: 600; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.5rem; }
+        .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-col a:hover { color: #f59e0b; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero h2 { font-size: 2.75rem; }
+            .hero-features { justify-content: center; }
+            .hero-visual { display: none; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav { position: fixed; top: 70px; left: 0; right: 0; background: var(--primary); padding: 1.5rem; transform: translateX(-100%); transition: transform 0.3s ease; }
+            nav.open { transform: translateX(0); }
+            nav ul { flex-direction: column; gap: 1rem; }
+            .hero h2 { font-size: 2.25rem; }
+            .services-grid, .values-grid, .trust-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .maintenance-note { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .exp-card { position: relative; bottom: auto; left: auto; margin: 1rem auto 0; max-width: 200px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 1.875rem; }
+            .section-title { font-size: 1.75rem; }
+            .hero-cta { flex-direction: column; }
+            .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+        }
     </style>
+<base target="_blank">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#hero">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#values">Values</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <div class="preloader" id="preloader"><div class="loader"></div></div>
+
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-badge">SLR</div>
+                    <div class="logo-text"><h1>Puertas y Muelles</h1><span>S.L.</span></div>
+                </a>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#valores">Valores</a></li>
+                        <li><a href="#contacto" class="btn-header">Presupuesto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <div class="hero" id="hero">
-        <h1>Welcome to SLR Puertas y Muelles</h1>
-    </div>
+    <main>
+        <section class="hero" id="inicio">
+            <div class="container">
+                <div class="hero-content">
+                    <div>
+                        <div class="hero-badge"><span>🏆</span> Equipo con 20+ años de experiencia</div>
+                        <h2>Puertas Seccionales Industriales <span>en Barcelona</span></h2>
+                        <p>Especialistas en instalación, mantenimiento y reparación de puertas seccionales, muelles de carga y sistemas de acceso industrial. Servicio profesional en Lliçà d'Amunt y provincia de Barcelona.</p>
+                        <div class="hero-cta">
+                            <a href="#contacto" class="btn-primary">Solicitar Presupuesto Gratis →</a>
+                            <a href="#servicios" class="btn-outline">Ver Servicios</a>
+                        </div>
+                        <div class="hero-features">
+                            <div class="hero-feature"><div class="hero-feature-icon">✓</div><span>Instalación certificada</span></div>
+                            <div class="hero-feature"><div class="hero-feature-icon">✓</div><span>Mantenimiento preventivo</span></div>
+                            <div class="hero-feature"><div class="hero-feature-icon">✓</div><span>+500 proyectos realizados</span></div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-image"></div>
+                        <div class="floating-badge top"><h4>20+</h4><p>Años experiencia<br>equipo técnico</p></div>
+                        <div class="floating-badge bottom"><h4>500+</h4><p>Proyectos<br>industriales</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="about" id="about">
-        <h2>About Us</h2>
-        <p>SLR Puertas y Muelles provides high-quality solutions for all your gates and docks needs.</p>
-    </section>
-
-    <section class="services" id="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div>Service 1</div>
-            <div>Service 2</div>
-            <div>Service 3</div>
-            <div>Service 4</div>
+        <div class="trust-bar">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item"><h3><span>20</span>+</h3><p>Años experiencia equipo</p></div>
+                    <div class="trust-item"><h3><span>500</span>+</h3><p>Proyectos industriales</p></div>
+                    <div class="trust-item"><h3><span>100</span>%</h3><p>Clientes satisfechos</p></div>
+                    <div class="trust-item"><h3><span>7-15</span>h</h3><p>Horario continuado</p></div>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <section class="values" id="values">
-        <h2>Our Values</h2>
-        <p>Integrity, Quality, Customer Service, Expertise.</p>
-    </section>
+        <section class="about" id="nosotros">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Sobre Nosotros</span>
+                    <h2 class="section-title">Expertos en Puertas Industriales y Muelles de Carga</h2>
+                    <p class="section-subtitle">Nuestro equipo técnico cuenta con más de 20 años de experiencia en el sector de puertas seccionales y sistemas de acceso industrial.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-content reveal">
+                        <h3>Compromiso con la Excelencia Industrial</h3>
+                        <p>En <strong>SLR Puertas y Muelles S.L.</strong> combinamos conocimiento técnico contrastado con las últimas tecnologías para ofrecer soluciones que optimizan la seguridad y eficiencia de su empresa.</p>
+                        <p>Desde nuestra base en Lliçà d'Amunt, proporcionamos servicio técnico a empresas industriales de toda la provincia de Barcelona, garantizando instalaciones duraderas y un mantenimiento que previene averías costosas.</p>
+                        <div class="about-highlight"><p>📍 <strong>Ubicación estratégica:</strong> Carrer Treball, 11 - 08185 Lliçà d'Amunt (Barcelona). Servicio en Granollers, Vallès Oriental y provincia de Barcelona.</p></div>
+                        <ul class="about-list">
+                            <li>Técnicos certificados con amplia experiencia</li>
+                            <li>Mantenimiento preventivo personalizado</li>
+                            <li>Repuestos originales y garantía de calidad</li>
+                            <li>Asesoramiento técnico especializado</li>
+                            <li>Conformidad con normativa europea CE</li>
+                        </ul>
+                    </div>
+                    <div class="about-visual reveal">
+                        <div class="about-image"></div>
+                        <div class="exp-card"><h4>20+</h4><p>Años de<br>experiencia<br>equipo</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="contact" id="contact">
-        <h2>Contact Us</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+        <section class="services" id="servicios">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Nuestros Servicios</span>
+                    <h2 class="section-title">Soluciones Completas para su Industria</h2>
+                    <p class="section-subtitle">Ofrecemos un servicio integral que cubre todas las necesidades de acceso y carga de su empresa industrial.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <div class="service-icon">🚪</div>
+                        <h3>Puertas Seccionales Industriales</h3>
+                        <p>Instalación de puertas seccionales de alta resistencia para naves industriales y almacenes. Apertura vertical que optimiza el espacio disponible.</p>
+                        <a href="#contacto" class="service-link">Más información →</a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon">⚡</div>
+                        <h3>Puertas Rápidas Industriales</h3>
+                        <p>Soluciones de alta velocidad para ambientes con ciclos de apertura frecuentes. Máxima eficiencia energética y control climático.</p>
+                        <a href="#contacto" class="service-link">Más información →</a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon">🚛</div>
+                        <h3>Muelles de Carga y Descarga</h3>
+                        <p>Equipamiento completo: plataformas niveladoras, abrigos de muelle y accesorios de seguridad para una logística eficiente.</p>
+                        <a href="#contacto" class="service-link">Más información →</a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon">🔄</div>
+                        <h3>Puertas Enrollables</h3>
+                        <p>Soluciones compactas para cierre de grandes vanos. Disponibles en acero, aluminio y PVC según necesidades específicas.</p>
+                        <a href="#contacto" class="service-link">Más información →</a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon">🔧</div>
+                        <h3>Mantenimiento Preventivo</h3>
+                        <p>Contratos de mantenimiento que garantizan el funcionamiento óptimo. Revisiones periódicas y gestión de recambios.</p>
+                        <a href="#contacto" class="service-link">Más información →</a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Reparación de Averías</h3>
+                        <p>Servicio técnico para resolver averías en puertas industriales. Recambios originales para todas las marcas principales.</p>
+                        <a href="#contacto" class="service-link">Más información →</a>
+                    </article>
+                </div>
+                <div class="maintenance-note reveal">
+                    <div class="maintenance-icon">⭐</div>
+                    <div class="maintenance-content">
+                        <h3>Servicio Prioritario para Clientes con Mantenimiento</h3>
+                        <p>Las empresas que contratan nuestros planes de mantenimiento preventivo disponen de atención prioritaria y servicio de urgencias. Consulte las condiciones de su contrato de mantenimiento.</p>
+                        <div class="maintenance-features">
+                            <span>✓ Atención preferente</span>
+                            <span>✓ Revisiones programadas</span>
+                            <span>✓ Descuentos en repuestos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <footer class="footer">
-        <p>&copy; 2026 SLR Puertas y Muelles. All rights reserved.</p>
+        <section class="values" id="valores">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label" style="background: rgba(255,255,255,0.15); color: white;">Nuestros Valores</span>
+                    <h2 class="section-title">Cuatro Pilares que Soportan Nuestro Trabajo</h2>
+                    <p class="section-subtitle">Nuestra filosofía se basa en principios sólidos que garantizan la calidad y satisfacción de nuestros clientes industriales.</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card reveal">
+                        <div class="value-icon">🤝</div>
+                        <h3>Compromiso</h3>
+                        <p>Dedicación total a cada proyecto, cumpliendo plazos y garantizando resultados que superan expectativas.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <div class="value-icon">📚</div>
+                        <h3>Formación</h3>
+                        <p>Actualización constante de nuestro equipo técnico en las últimas tecnologías del sector.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <div class="value-icon">🎯</div>
+                        <h3>Constancia</h3>
+                        <p>Seguimiento continuo de las necesidades específicas de cada cliente industrial.</p>
+                    </div>
+                    <div class="value-card reveal">
+                        <div class="value-icon">🌱</div>
+                        <h3>Responsabilidad</h3>
+                        <p>Compromiso con la sostenibilidad y cumplimiento de normativas medioambientales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contacto">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Contacto</span>
+                    <h2 class="section-title">Solicite su Presupuesto Sin Compromiso</h2>
+                    <p class="section-subtitle">Contacte con nosotros para obtener un presupuesto personalizado para su proyecto industrial.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <h3>Información de Contacto</h3>
+                        <p>Estamos disponibles para resolver sus dudas y elaborar un presupuesto adaptado a las necesidades de su empresa.</p>
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <div class="contact-icon-box">📍</div>
+                                <div class="contact-details">
+                                    <h4>Dirección</h4>
+                                    <p>Carrer Treball, 11<br>08185 Lliçà d'Amunt<br>Barcelona, España</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon-box">📞</div>
+                                <div class="contact-details">
+                                    <h4>Teléfono</h4>
+                                    <p>938 49XX XX<br><small>Lunes a Viernes: 7:00 - 15:00</small></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon-box">✉️</div>
+                                <div class="contact-details">
+                                    <h4>Email</h4>
+                                    <p>slr@slr.cat<br><small>Respuesta en 24-48 horas</small></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon-box">🕐</div>
+                                <div class="contact-details">
+                                    <h4>Horario</h4>
+                                    <p>Lunes a Viernes: 7:00 - 15:00<br>Sábados y Domingos: Cerrado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-box reveal">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group"><label for="nombre">Nombre completo *</label><input type="text" id="nombre" name="nombre" required placeholder="Su nombre completo"></div>
+                                <div class="form-group"><label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa" placeholder="Nombre de su empresa"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="telefono">Teléfono *</label><input type="tel" id="telefono" name="telefono" required placeholder="938 49 XX XX"></div>
+                                <div class="form-group"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="su@email.com"></div>
+                            </div>
+                            <div class="form-group full"><label for="servicio">Servicio requerido *</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="">Seleccione un servicio...</option>
+                                    <option value="Puertas Seccionales">Puertas Seccionales Industriales</option>
+                                    <option value="Puertas Rápidas">Puertas Rápidas Industriales</option>
+                                    <option value="Muelles de Carga">Muelles de Carga</option>
+                                    <option value="Puertas Enrollables">Puertas Enrollables</option>
+                                    <option value="Mantenimiento">Mantenimiento Preventivo</option>
+                                    <option value="Reparacion">Reparación / Avería</option>
+                                    <option value="Presupuesto">Presupuesto General</option>
+                                </select>
+                            </div>
+                            <div class="form-group full"><label for="mensaje">Mensaje detallado</label><textarea id="mensaje" name="mensaje" placeholder="Describa su necesidad: tipo de nave, dimensiones aproximadas, ubicación, etc."></textarea></div>
+                            <button type="submit" class="btn-submit">Enviar Solicitud →</button>
+                        </form>
+                        <div id="successMessage" class="success-msg">✓ Mensaje enviado. Le responderemos en menos de 48 horas.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>SLR Puertas y Muelles S.L.</h3>
+                    <p>Especialistas en soluciones de acceso industrial. Equipo técnico con más de 20 años de experiencia en puertas seccionales y muelles de carga.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Puertas Seccionales</a></li>
+                        <li><a href="#servicios">Muelles de Carga</a></li>
+                        <li><a href="#servicios">Mantenimiento</a></li>
+                        <li><a href="#servicios">Reparación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#nosotros">Sobre Nosotros</a></li>
+                        <li><a href="#valores">Valores</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>Carrer Treball, 11</li>
+                        <li>08185 Lliçà d'Amunt</li>
+                        <li>Tel: 938 49XX XX</li>
+                        <li>slr@slr.cat</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SLR Puertas y Muelles S.L. Todos los derechos reservados.</p>
+                <p>Puertas seccionales industriales Barcelona</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 500);
+        });
+
+        // Header scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Mobile menu
+        function toggleMenu() {
+            document.getElementById('nav').classList.toggle('open');
+        }
+
+        // Close menu on link click
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('active'));
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(this));
+            const subject = `Solicitud: ${data.servicio} - ${data.nombre}`;
+            const body = `NOMBRE: ${data.nombre}%0D%0AEMPRESA: ${data.empresa || 'No especificada'}%0D%0ATELÉFONO: ${data.telefono}%0D%0AEMAIL: ${data.email}%0D%0ASERVICIO: ${data.servicio}%0D%0AMENSAJE: ${data.mensaje || 'Sin mensaje'}`;
+            window.location.href = `mailto:slr@slr.cat?subject=${encodeURIComponent(subject)}&body=${body}`;
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
+        });
+    </script>
 </body>
 </html>
