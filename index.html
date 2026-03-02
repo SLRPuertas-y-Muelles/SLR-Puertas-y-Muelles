@@ -432,8 +432,8 @@
                             <div class="contact-item">
                                 <div class="contact-icon-box">📞</div>
                                 <div class="contact-details">
-                                    <h4>Teléfono</h4>
-                                    <p>938 49XX XX<br><small>Lunes a Viernes: 7:00 - 15:00</small></p>
+                                    <h4>Teléfono / WhatsApp</h4>
+                                    <p><a href="https://wa.me/34601508960" style="color: var(--accent); text-decoration: none; font-weight: 600;">601 508 960</a><br><small>Lunes a Viernes: 7:00 - 15:00</small></p>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -459,7 +459,7 @@
                                 <div class="form-group"><label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa" placeholder="Nombre de su empresa"></div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group"><label for="telefono">Teléfono *</label><input type="tel" id="telefono" name="telefono" required placeholder="938 49 XX XX"></div>
+                                <div class="form-group"><label for="telefono">Teléfono *</label><input type="tel" id="telefono" name="telefono" required placeholder="601 508 960"></div>
                                 <div class="form-group"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="su@email.com"></div>
                             </div>
                             <div class="form-group full"><label for="servicio">Servicio requerido *</label>
@@ -477,7 +477,7 @@
                             <div class="form-group full"><label for="mensaje">Mensaje detallado</label><textarea id="mensaje" name="mensaje" placeholder="Describa su necesidad: tipo de nave, dimensiones aproximadas, ubicación, etc."></textarea></div>
                             <button type="submit" class="btn-submit">Enviar Solicitud →</button>
                         </form>
-                        <div id="successMessage" class="success-msg">✓ Mensaje enviado. Le responderemos en menos de 48 horas.</div>
+                        <div id="successMessage" class="success-msg">✓ Mensaje enviado correctamente. Le responderemos en menos de 48 horas.</div>
                     </div>
                 </div>
             </div>
@@ -513,7 +513,7 @@
                     <ul>
                         <li>Carrer Treball, 11</li>
                         <li>08185 Lliçà d'Amunt</li>
-                        <li>Tel: 938 49XX XX</li>
+                        <li>Tel: <a href="https://wa.me/34601508960" style="color: rgba(255,255,255,0.7); text-decoration: none;">601 508 960</a></li>
                         <li>slr@slr.cat</li>
                     </ul>
                 </div>
@@ -562,16 +562,49 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Form submission
+        // Form submission - CORREGIDO
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const data = Object.fromEntries(new FormData(this));
-            const subject = `Solicitud: ${data.servicio} - ${data.nombre}`;
-            const body = `NOMBRE: ${data.nombre}%0D%0AEMPRESA: ${data.empresa || 'No especificada'}%0D%0ATELÉFONO: ${data.telefono}%0D%0AEMAIL: ${data.email}%0D%0ASERVICIO: ${data.servicio}%0D%0AMENSAJE: ${data.mensaje || 'Sin mensaje'}`;
-            window.location.href = `mailto:slr@slr.cat?subject=${encodeURIComponent(subject)}&body=${body}`;
+            
+            // Obtener datos del formulario
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Construir el email con toda la información
+            const subject = `Solicitud de Presupuesto: ${data.servicio} - ${data.nombre}`;
+            const body = `SOLICITUD DE PRESUPUESTO - SLR Puertas y Muelles
+
+═══════════════════════════════════════
+
+DATOS DEL CLIENTE:
+• Nombre: ${data.nombre}
+• Empresa: ${data.empresa || 'No especificada'}
+• Teléfono: ${data.telefono}
+• Email: ${data.email}
+
+SERVICIO SOLICITADO:
+• Tipo: ${data.servicio}
+
+MENSAJE/DETALLES:
+${data.mensaje || 'No se han proporcionado detalles adicionales.'}
+
+═══════════════════════════════════════
+Enviado desde: slrpuertas.com
+Fecha: ${new Date().toLocaleString('ca-ES')}`;
+
+            // Abrir cliente de correo con datos prellenados
+            window.location.href = `mailto:slr@slr.cat?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Mostrar mensaje de éxito
             document.getElementById('successMessage').style.display = 'block';
+            
+            // Resetear formulario
             this.reset();
-            setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
         });
     </script>
 </body>
